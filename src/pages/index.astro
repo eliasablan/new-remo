@@ -10,7 +10,7 @@ import Socials from "../components/Socials.astro";
 // site config
 import { SOCIALS } from "../config";
 // queries
-import { getPosts } from "../utils/sanityQueries";
+import { getPosts } from "../lib/sanity/utils/sanityQueries";
 
 const posts = await getPosts();
 
@@ -146,3 +146,4 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply my-8 text-center;
   }
 </style>
+../lib/sanity/utils/sanityQueries
