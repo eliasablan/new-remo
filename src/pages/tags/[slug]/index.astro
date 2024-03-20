@@ -1,0 +1,32 @@
+---
+import TagPosts from "../../../components/TagPosts.astro";
+import {
+  getTags,
+  getPostsByTag,
+} from "../../../lib/sanity/utils/sanityQueries";
+import { getPagination } from "../../../lib/utils";
+
+export async function getStaticPaths() {
+  const tags = await getTags();
+
+  return tags.map(({ tag, slug }) => {
+    return {
+      params: { slug },
+      props: { tag },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const { tag } = Astro.props;
+const postsByTag = await getPostsByTag(slug);
+// console.log(tag);
+
+const pagination = getPagination({
+  posts: postsByTag,
+  page: 1,
+  isIndex: true,
+});
+---
+
+<TagPosts {...pagination} {tag} {slug} />

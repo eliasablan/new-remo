@@ -21,7 +21,7 @@ export type Tag = {
 };
 
 export const getPosts = async (): Promise<Post[]> => {
-  const posts = await sanityClient.fetch(
+  return await sanityClient.fetch(
     `*[_type == "post"] | order(_createdAt desc) {
       "id":_id,
       "slug":slug.current,
@@ -37,15 +37,33 @@ export const getPosts = async (): Promise<Post[]> => {
       }
     }`
   );
-  return posts;
 };
 
 export const getTags = async (): Promise<Tag[]> => {
-  const tags = await sanityClient.fetch(
+  return await sanityClient.fetch(
     `*[_type == "postTag"] | order(_createdAt desc) {
       "tag":name,
       "slug":slug.current
     }`
   );
-  return tags;
+};
+
+export const getPostsByTag = async (slug: string): Promise<Post[]> => {
+  return sanityClient.fetch(
+    `*[_type == "post" && $slug in tags[]->slug.current] | order(_createdAt desc) {
+      "id":_id,
+      "slug":slug.current,
+      "body":content,
+      "data": {
+        "author": author->name,
+        "pubDatetime":_createdAt,
+        "modDatetime":_updatedAt,
+        title,
+        featured,
+        "tags":tags[]->name,
+        description
+      }
+    }`,
+    { slug }
+  );
 };
