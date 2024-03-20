@@ -1,0 +1,22 @@
+---
+import { LOCALE } from "../config";
+const { pubDatetime, modDatetime } = Astro.props;
+const myDatetime = new Date(
+  modDatetime && modDatetime > pubDatetime ? modDatetime : pubDatetime
+);
+const date = myDatetime.toLocaleDateString(LOCALE.langTag, {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+
+const time = myDatetime.toLocaleTimeString(LOCALE.langTag, {
+  hour: "2-digit",
+  minute: "2-digit",
+});
+---
+
+<time date-time={myDatetime.toISOString()}>{date}</time>
+<span aria-hidden="true"> | </span>
+<span class="sr-only">&nbsp;at&nbsp;</span>
+<span class="text-nowrap">{time}</span>

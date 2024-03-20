@@ -1,16 +1,210 @@
 ---
+// layout and components
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import LinkButton from "../components/LinkButton.astro";
+import Hr from "../components/Hr.astro";
+import Card from "../components/Card.astro";
+import Socials from "../components/Socials.astro";
+// site config
+import { SOCIALS } from "../config";
+// queries
+// import { getPosts } from "../utils/sanityQueries";
 
+// const posts = await getPosts();
+const posts = [
+  {
+    id: "f8510351-1a9b-498b-8a66-9a0d3962a5b2",
+    slug: "example-post",
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        _key: "058c95bbfca8",
+        markDefs: [],
+        children: [
+          {
+            _type: "span",
+            marks: [],
+            text: "Users can see this post because it is not in draft.",
+            _key: "3601d0dfe18b0",
+          },
+        ],
+      },
+    ],
+    data: {
+      author: "Elias Ablan",
+      pubDatetime: "2024-03-19T01:58:52Z",
+      modDatetime: "2024-03-19T01:58:52Z",
+      title: "Example Post",
+      featured: true,
+      tags: ["Typescript", "Astro"],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est",
+    },
+  },
+  {
+    id: "e340a9a9-9665-4d7d-b7f3-65ff0a16172b",
+    slug: "astropaper-3-0",
+    body: [
+      {
+        children: [
+          {
+            _type: "span",
+            marks: [],
+            text: "We're excited to announce the release of AstroPaper v3, packed with new features, enhancements, and bug fixes to elevate your web development experience. Let's dive into the highlights of this release:",
+            _key: "8383ef0a607e0",
+          },
+        ],
+        _type: "block",
+        style: "normal",
+        _key: "a40dccaf03ad",
+        markDefs: [],
+      },
+    ],
+    data: {
+      featured: true,
+      tags: ["Release"],
+      description:
+        "AstroPaper Version 3: Elevating Your Web Experience with Astro v3 and Seamless View Transitions",
+      author: "Elias Ablan",
+      pubDatetime: "2024-03-19T01:44:45Z",
+      modDatetime: "2024-03-19T03:18:17Z",
+      title: "AstroPaper 3.0",
+    },
+  },
+];
+
+const featuredPosts = posts.filter(({ data }) => data.featured);
+const recentPosts = posts.filter(({ data }) => !data.featured);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Header />
+  <main id="main-content">
+    <section id="hero">
+      <h1>Proyecto Remo</h1>
+
+      <p>
+        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
+        blog theme. This theme follows best practices and provides accessibility
+        out of the box. Light and dark mode are supported by default. Moreover,
+        additional color schemes can also be configured.
+      </p>
+      <p>
+        Read the blog posts or check
+        <LinkButton
+          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
+          href="https://github.com/satnaing/astro-paper#readme"
+        >
+          README
+        </LinkButton> for more info.
+      </p>
+      {
+        // only display if at least one social link is enabled
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <div class="social-links">Social Links:</div>
+            <Socials />
+          </div>
+        )
+      }
+    </section>
+
+    <Hr />
+
+    {
+      featuredPosts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured</h2>
+            <ul>
+              {featuredPosts.map(({ data, slug }) => (
+                <Card
+                  href={`/posts/${slug}/`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          {recentPosts.length > 0 && <Hr />}
+        </>
+      )
+    }
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts">
+          <h2>Recent Posts</h2>
+          <ul>
+            {recentPosts.map(
+              ({ data, slug }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/posts/${slug}/`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="all-posts-btn-wrapper">
+      <LinkButton href="/posts/">
+        All Posts
+        <svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+          ></path>
+        </svg>
+      </LinkButton>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  #hero .rss-link {
+    @apply mb-6;
+  }
+  #hero .rss-icon {
+    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+
+  /* ===== Featured & Recent Posts Sections ===== */
+  #featured,
+  #recent-posts {
+    @apply pb-6 pt-12;
+  }
+  #featured h2,
+  #recent-posts h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>
