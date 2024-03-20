@@ -1,7 +1,7 @@
 ---
 import Datetime from "./Datetime.astro";
-const { frontmatter } = Astro.props;
-const { title, slug, description, pubDatetime, modDatetime, href, secHeading } =
+const { frontmatter, href } = Astro.props;
+const { title, slug, description, pubDatetime, modDatetime, secHeading } =
   frontmatter;
 const headerProps = {
   style: { viewTransitionName: slug },

@@ -10,71 +10,9 @@ import Socials from "../components/Socials.astro";
 // site config
 import { SOCIALS } from "../config";
 // queries
-// import { getPosts } from "../utils/sanityQueries";
+import { getPosts } from "../utils/sanityQueries";
 
-// const posts = await getPosts();
-const posts = [
-  {
-    id: "f8510351-1a9b-498b-8a66-9a0d3962a5b2",
-    slug: "example-post",
-    body: [
-      {
-        _type: "block",
-        style: "normal",
-        _key: "058c95bbfca8",
-        markDefs: [],
-        children: [
-          {
-            _type: "span",
-            marks: [],
-            text: "Users can see this post because it is not in draft.",
-            _key: "3601d0dfe18b0",
-          },
-        ],
-      },
-    ],
-    data: {
-      author: "Elias Ablan",
-      pubDatetime: "2024-03-19T01:58:52Z",
-      modDatetime: "2024-03-19T01:58:52Z",
-      title: "Example Post",
-      featured: true,
-      tags: ["Typescript", "Astro"],
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est",
-    },
-  },
-  {
-    id: "e340a9a9-9665-4d7d-b7f3-65ff0a16172b",
-    slug: "astropaper-3-0",
-    body: [
-      {
-        children: [
-          {
-            _type: "span",
-            marks: [],
-            text: "We're excited to announce the release of AstroPaper v3, packed with new features, enhancements, and bug fixes to elevate your web development experience. Let's dive into the highlights of this release:",
-            _key: "8383ef0a607e0",
-          },
-        ],
-        _type: "block",
-        style: "normal",
-        _key: "a40dccaf03ad",
-        markDefs: [],
-      },
-    ],
-    data: {
-      featured: true,
-      tags: ["Release"],
-      description:
-        "AstroPaper Version 3: Elevating Your Web Experience with Astro v3 and Seamless View Transitions",
-      author: "Elias Ablan",
-      pubDatetime: "2024-03-19T01:44:45Z",
-      modDatetime: "2024-03-19T03:18:17Z",
-      title: "AstroPaper 3.0",
-    },
-  },
-];
+const posts = await getPosts();
 
 const featuredPosts = posts.filter(({ data }) => data.featured);
 const recentPosts = posts.filter(({ data }) => !data.featured);
