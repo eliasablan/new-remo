@@ -1,4 +1,5 @@
 import { SITE } from "../config";
+import type { Post } from "./sanity/utils/sanityQueries";
 
 interface GetPaginationProps<T> {
   posts: T;
@@ -40,4 +41,25 @@ export const getPageNumbers = (numberOfPosts: number) => {
   }
 
   return pageNumbers;
+};
+
+export const postFilter = ({ data }: Post) => {
+  const isPublishTimePassed =
+    Date.now() >
+    new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin;
+  return import.meta.env.DEV || isPublishTimePassed;
+};
+
+export const getSortedPosts = (posts: Post[]) => {
+  return posts
+    .filter(postFilter)
+    .sort(
+      (a, b) =>
+        Math.floor(
+          new Date(b.data.modDatetime ?? b.data.pubDatetime).getTime() / 1000
+        ) -
+        Math.floor(
+          new Date(a.data.modDatetime ?? a.data.pubDatetime).getTime() / 1000
+        )
+    );
 };

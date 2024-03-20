@@ -10,7 +10,7 @@ export type Post = {
     modDatetime: string;
     title: string;
     featured: boolean;
-    tags: string[];
+    tags: Tag[];
     description: string;
   };
 };
@@ -32,7 +32,7 @@ export const getPosts = async (): Promise<Post[]> => {
         "modDatetime":_updatedAt,
         title,
         featured,
-        "tags":tags[]->name,
+        "tags":tags[]->{name,"slug":slug.current},
         description
       }
     }`
