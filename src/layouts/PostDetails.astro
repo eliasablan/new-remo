@@ -10,7 +10,7 @@ import type { Tag as TTag } from "../lib/sanity/utils/sanityQueries";
 
 const { post } = Astro.props;
 
-const { title, author, description, pubDatetime, modDatetime, tags } =
+const { title, slug, author, description, pubDatetime, modDatetime, tags } =
   post.data;
 
 const layoutProps = {
@@ -43,7 +43,7 @@ const layoutProps = {
     </button>
   </div>
   <main id="main-content">
-    <h1 transition:name={title} class="post-title">{title}</h1>
+    <h1 transition:name={slug} class="post-title">{title}</h1>
     <Datetime
       pubDatetime={pubDatetime}
       modDatetime={modDatetime}

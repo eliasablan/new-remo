@@ -5,6 +5,7 @@ export type Post = {
   slug: string;
   body: string;
   data: {
+    slug: string;
     author: string;
     pubDatetime: string;
     modDatetime: string;
@@ -27,6 +28,7 @@ export const getPosts = async (): Promise<Post[]> => {
       "slug":slug.current,
       "body":content,
       "data": {
+        "slug":slug.current,
         "author": author->name,
         "pubDatetime":_createdAt,
         "modDatetime":_updatedAt,
@@ -55,6 +57,7 @@ export const getPostsByTag = async (slug: string): Promise<Post[]> => {
       "slug":slug.current,
       "body":content,
       "data": {
+        "slug":slug.current,
         "author": author->name,
         "pubDatetime":_createdAt,
         "modDatetime":_updatedAt,
