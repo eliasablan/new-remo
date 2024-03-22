@@ -5,6 +5,70 @@ import { Block as DefaultBlock } from "astro-portabletext/components";
 export type Props = $<Block>;
 
 const props = Astro.props;
+const { node, index, isInline, ...attrs } = props;
+const styleIs = (style: string) => style === node.style;
 ---
 
-<DefaultBlock {...props}><slot /></DefaultBlock>
+{
+  styleIs("h1") ? (
+    <h1
+      id={node.children[0].text.toLowerCase().replace(/\s/g, "-")}
+      class="mb-10 pt-4 text-6xl font-bold"
+      {...attrs}
+    >
+      <slot />
+    </h1>
+  ) : styleIs("h2") ? (
+    <h2
+      id={node.children[0].text.toLowerCase().replace(/\s/g, "-")}
+      class="mb-10 pt-4 text-5xl font-bold"
+      {...attrs}
+    >
+      <slot />
+    </h2>
+  ) : styleIs("h3") ? (
+    <h3
+      id={node.children[0].text.toLowerCase().replace(/\s/g, "-")}
+      class="mb-9 pt-4 text-4xl font-bold"
+      {...attrs}
+    >
+      <slot />
+    </h3>
+  ) : styleIs("h4") ? (
+    <h4
+      id={node.children[0].text.toLowerCase().replace(/\s/g, "-")}
+      class="mb-9 pt-4 text-3xl font-bold"
+      {...attrs}
+    >
+      <slot />
+    </h4>
+  ) : styleIs("h5") ? (
+    <h5
+      id={node.children[0].text.toLowerCase().replace(/\s/g, "-")}
+      class="mb-8 pt-4 text-2xl font-bold"
+      {...attrs}
+    >
+      <slot />
+    </h5>
+  ) : styleIs("h6") ? (
+    <h6
+      id={node.children[0].text.toLowerCase().replace(/\s/g, "-")}
+      class="mb-8 pt-4 text-xl font-bold"
+      {...attrs}
+    >
+      <slot />
+    </h6>
+  ) : styleIs("blockquote") ? (
+    <blockquote {...attrs}>
+      <slot />
+    </blockquote>
+  ) : styleIs("normal") ? (
+    <p {...attrs}>
+      <slot />
+    </p>
+  ) : (
+    <DefaultBlock {...props}>
+      <slot />
+    </DefaultBlock>
+  )
+}
