@@ -1,0 +1,10 @@
+---
+import type { Props as $, Block } from "astro-portabletext/types";
+import { Block as DefaultBlock } from "astro-portabletext/components";
+
+export type Props = $<Block>;
+
+const props = Astro.props;
+---
+
+<DefaultBlock {...props}><slot /></DefaultBlock>
