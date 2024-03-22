@@ -1,12 +1,13 @@
 ---
+import { SITE } from "../config";
+import type { Tag as TTag } from "../lib/sanity/utils/sanityQueries";
 import Layout from "./Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Tag from "../components/Tag.astro";
 import Datetime from "../components/Datetime.astro";
 import ShareLinks from "../components/ShareLinks.astro";
-import { SITE } from "../config";
-import type { Tag as TTag } from "../lib/sanity/utils/sanityQueries";
+import PT from "../components/PortableText/PortableText.astro";
 
 const { post } = Astro.props;
 
@@ -51,6 +52,7 @@ const layoutProps = {
       className="my-2"
     />
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
+      <PT value={post.body} />
     </article>
 
     <ul class="my-8">
