@@ -17,7 +17,7 @@ export type Post = {
 };
 
 export type Tag = {
-  tag: string;
+  name: string;
   slug: string;
 };
 
@@ -44,7 +44,7 @@ export const getPosts = async (): Promise<Post[]> => {
 export const getTags = async (): Promise<Tag[]> => {
   return await sanityClient.fetch(
     `*[_type == "postTag"] | order(_createdAt desc) {
-      "tag":name,
+      name,
       "slug":slug.current
     }`
   );

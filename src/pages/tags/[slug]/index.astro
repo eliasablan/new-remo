@@ -9,16 +9,16 @@ import { getPagination } from "../../../lib/utils";
 export async function getStaticPaths() {
   const tags = await getTags();
 
-  return tags.map(({ tag, slug }) => {
+  return tags.map(({ name, slug }) => {
     return {
       params: { slug },
-      props: { tag },
+      props: { name },
     };
   });
 }
 
 const { slug } = Astro.params;
-const { tag } = Astro.props;
+const { name } = Astro.props;
 const postsByTag = await getPostsByTag(slug);
 
 const pagination = getPagination({
@@ -28,4 +28,4 @@ const pagination = getPagination({
 });
 ---
 
-<TagPosts {...pagination} {tag} {slug} />
+<TagPosts {...pagination} tag={name} {slug} />
