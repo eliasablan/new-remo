@@ -2,7 +2,7 @@
 import LinkButton from "./LinkButton.astro";
 import socialIcons from "../assets/socialIcons";
 
-const URL = Astro.url;
+const astroURL = new URL(Astro.url.pathname, import.meta.env.URL).href;
 
 const shareLinks = [
   {
@@ -46,7 +46,7 @@ const shareLinks = [
     {
       shareLinks.map(social => (
         <LinkButton
-          href={`${social.href + URL}`}
+          href={`${social.href + astroURL}`}
           className="scale-90 p-2 hover:rotate-6 sm:p-1"
           title={social.linkTitle}
         >
