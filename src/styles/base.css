@@ -97,7 +97,7 @@
 
   /* width */
   ::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-3;
   }
 
   /* Track */
