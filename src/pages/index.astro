@@ -40,26 +40,38 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </svg>
         <span class="sr-only">RSS Feed</span>
       </a>
-      <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+      <p class="pb-4 leading-relaxed">
+        Somos una fundación sin ánimo de lucro que busca fomentar la lectura y
+        el concepto de comunidad a través de la creación de pequeñas bibliotecas
+        públicas al aire libre. Estas bibliotecas, ubicadas en calles y espacios
+        públicos, ofrecen acceso gratuito a libros para todas las edades.
       </p>
-      <p>
-        Read the blog posts or check
-        <LinkButton
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
+      <p class="pb-4 leading-relaxed">
+        Cualquier persona puede tomar un libro para leerlo en casa o dejarlo
+        para que otros puedan disfrutarlo. De esta manera, promovemos el
+        intercambio cultural y la construcción de una comunidad más lectora y
+        solidaria.
       </p>
+      <p class="pb-4 leading-relaxed">
+        <b
+          >¡Únete a nuestra iniciativa y ayúdanos a compartir el amor por la
+          lectura!
+        </b>
+      </p>
+      <p class="pb-4 leading-relaxed"><b>¿Cómo puedes colaborar? </b></p>
+      <ul class="list-inside list-disc pb-4 marker:text-skin-accent">
+        <li class="m-2">Dona libros en buen estado.</li>
+        <li class="m-2">
+          Sé voluntario en la construcción o mantenimiento de las bibliotecas.
+        </li>
+        <li class="m-2">Difunde nuestra iniciativa en tus redes sociales.</li>
+      </ul>
+      <p><b>¡Juntos podemos construir un mundo más lector!</b></p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
+            <div class="social-links">Síguenos en nuestras redes sociales:</div>
             <Socials />
           </div>
         )
@@ -72,7 +84,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>Publicaciones Destacadas</h2>
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
@@ -91,7 +103,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       recentPosts.length > 0 && (
         <section id="recent-posts">
-          <h2>Recent Posts</h2>
+          <h2>Publicaciones Recientes</h2>
           <ul>
             {recentPosts.map(({ data, slug }) => (
               <Card
@@ -107,7 +119,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
-        All Posts
+        Todas las Publicaciones
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"

@@ -21,7 +21,7 @@ const { pubDatetime, modDatetime, size = "sm" } = Astro.props;
   {
     modDatetime && modDatetime > pubDatetime ? (
       <span class={`italic ${size === "sm" ? "text-sm" : "text-base"}`}>
-        Updated:
+        Actualizado:
       </span>
     ) : (
       <span class="sr-only">Published:</span>
