@@ -10,12 +10,11 @@ import Socials from "../components/Socials.astro";
 // site config
 import { SOCIALS } from "../config";
 // queries
-import { getPosts } from "../lib/sanity/utils/sanityQueries";
+import { getPosts, getRecentPosts } from "../lib/sanity/utils/sanityQueries";
 
 const posts = await getPosts();
-
 const featuredPosts = posts.filter(({ data }) => data.featured);
-const recentPosts = posts.filter(({ data }) => !data.featured);
+const recentPosts = await getRecentPosts();
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -94,16 +93,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         <section id="recent-posts">
           <h2>Recent Posts</h2>
           <ul>
-            {recentPosts.map(
-              ({ data, slug }, index) =>
-                index < 4 && (
-                  <Card
-                    href={`/posts/${slug}/`}
-                    frontmatter={data}
-                    secHeading={false}
-                  />
-                )
-            )}
+            {recentPosts.map(({ data, slug }) => (
+              <Card
+                href={`/posts/${slug}/`}
+                frontmatter={data}
+                secHeading={false}
+              />
+            ))}
           </ul>
         </section>
       )
