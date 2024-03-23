@@ -59,7 +59,7 @@ const styleIs = (style: string) => style === node.style;
       <slot />
     </h6>
   ) : styleIs("blockquote") ? (
-    <blockquote {...attrs}>
+    <blockquote class="text-skin-base" {...attrs}>
       <slot />
     </blockquote>
   ) : styleIs("normal") ? (
