@@ -15,7 +15,10 @@ const tags = await getTags();
 
 <Layout title={`Tags | ${SITE.title}`}>
   <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
+  <Main
+    pageTitle="Tags"
+    pageDesc="Todos los tags utilizados en nuestras publicaciones."
+  >
     <ul>
       {tags && tags.map(({ slug }) => <Tag {slug} size="lg" />)}
     </ul>

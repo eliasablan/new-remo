@@ -24,7 +24,7 @@ const { currentPage, totalPages, paginatedPosts, tag, slug } = Astro.props;
   <Main
     pageTitle={[`Tag:`, `${tag}`]}
     titleTransition={slug}
-    pageDesc={`All the articles with the tag "${slug}".`}
+    pageDesc={`Todas las publicaciones con el tag "${slug}".`}
   >
     <h1 slot="title" transition:name={slug}>{`Tag:${slug}`}</h1>
     <ul>
