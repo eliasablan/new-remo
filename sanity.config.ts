@@ -4,8 +4,12 @@ import { visionTool } from "@sanity/vision";
 import { iconPicker } from "sanity-plugin-icon-picker";
 import { schemaTypes } from "./src/lib/sanity/schemas";
 
-const projectId = import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID;
-const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET;
+const projectId =
+  import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID ||
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID;
+const dataset =
+  import.meta.env.PUBLIC_SANITY_STUDIO_DATASET ||
+  import.meta.env.PUBLIC_SANITY_DATASET;
 
 const config = defineConfig({
   name: "default",
@@ -17,9 +21,6 @@ const config = defineConfig({
   apiVersion: "2024-01-01",
 
   plugins: [structureTool(), visionTool(), iconPicker()],
-
-  basePath: "/admin",
-
   schema: {
     types: schemaTypes,
   },
