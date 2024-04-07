@@ -1,5 +1,5 @@
 import { defineConfig } from "sanity";
-import { structureTool } from "sanity/structure";
+import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { iconPicker } from "sanity-plugin-icon-picker";
 import { schemaTypes } from "./src/lib/sanity/schemas";
@@ -20,7 +20,7 @@ const config = defineConfig({
 
   apiVersion: "2024-01-01",
 
-  plugins: [structureTool(), visionTool(), iconPicker()],
+  plugins: [deskTool(), visionTool(), iconPicker()],
   schema: {
     types: schemaTypes,
   },

@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
-import sanity from "@sanity/astro";
+import { sanityIntegration } from "@sanity/astro";
 import react from "@astrojs/react";
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID;
@@ -15,7 +15,7 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     tailwind(),
-    sanity({
+    sanityIntegration({
       projectId,
       dataset,
       // Set useCdn to false if you're building statically.
