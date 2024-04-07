@@ -5,7 +5,12 @@ import { Block as DefaultBlock } from "astro-portabletext/components";
 export type Props = $<Block>;
 
 const props = Astro.props;
-const { node, index, isInline, ...attrs } = props;
+const {
+  node,
+  //  index,
+  //   isInline,
+  ...attrs
+} = props;
 const styleIs = (style: string) => style === node.style;
 ---
 
