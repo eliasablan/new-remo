@@ -1,9 +1,9 @@
-import React from 'react'
-import { Stack, Inline, Button } from '@sanity/ui'
-import { Link } from 'sanity/router'
+import React from "react";
+import { Stack, Inline, Button } from "@sanity/ui";
+import { Link } from "sanity/router";
 
 interface Props {
-  context: string
+  context: string;
   renderDefault: (
     arg0: any
   ) =>
@@ -12,20 +12,19 @@ interface Props {
     | boolean
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | Iterable<React.ReactNode>
-    | Promise<React.AwaitedReactNode>
     | null
-    | undefined
+    | undefined;
 }
 
 const ToolMenu = (props: Props) => {
-  if (props.context == 'topbar') {
+  if (props.context == "topbar") {
     return (
       <Inline margin={0}>
         {props.renderDefault(props)}
         <Link
           href="/"
           target="_blank"
-          style={{ textDecoration: 'none' }}
+          style={{ textDecoration: "none" }}
           replace
         >
           <Button
@@ -38,8 +37,8 @@ const ToolMenu = (props: Props) => {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 style={{
-                  width: '16px',
-                  height: '16px',
+                  width: "16px",
+                  height: "16px",
                 }}
               >
                 <path
@@ -50,7 +49,7 @@ const ToolMenu = (props: Props) => {
               </svg>
             )}
             text="GO TO APP"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             padding={2}
             tone="critical"
             // mode="ghost"
@@ -58,17 +57,17 @@ const ToolMenu = (props: Props) => {
           />
         </Link>
       </Inline>
-    )
+    );
   }
 
-  if (props.context == 'sidebar') {
+  if (props.context == "sidebar") {
     return (
       <Stack margin={0}>
         {props.renderDefault(props)}
         <Link
           href="/"
           target="_blank"
-          style={{ textDecoration: 'none', padding: '5px 0' }}
+          style={{ textDecoration: "none", padding: "5px 0" }}
           replace
         >
           <Stack>
@@ -82,8 +81,8 @@ const ToolMenu = (props: Props) => {
                   strokeWidth={1.5}
                   stroke="currentColor"
                   style={{
-                    width: '16px',
-                    height: '16px',
+                    width: "16px",
+                    height: "16px",
                   }}
                 >
                   <path
@@ -94,7 +93,7 @@ const ToolMenu = (props: Props) => {
                 </svg>
               )}
               text="GO TO APP"
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               radius={2}
               padding={[4, 3]}
               tone="critical"
@@ -103,8 +102,8 @@ const ToolMenu = (props: Props) => {
           </Stack>
         </Link>
       </Stack>
-    )
+    );
   }
-}
+};
 
-export default ToolMenu
+export default ToolMenu;
