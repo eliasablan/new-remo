@@ -3,6 +3,13 @@ import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { iconPicker } from "sanity-plugin-icon-picker";
 import { schemaTypes } from "./src/lib/sanity/schemas";
+import {
+  pageStructure,
+  singletonPlugin,
+} from "./src/lib/sanity/plugins/settings";
+import home from "./src/lib/sanity/schemas/home";
+import settings from "./src/lib/sanity/schemas/settings";
+import ToolMenu from "./src/components/sanity/studio/ToolMenu";
 
 const projectId =
   import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID ||
@@ -20,9 +27,23 @@ const config = defineConfig({
 
   apiVersion: "2024-01-01",
 
-  plugins: [deskTool(), visionTool(), iconPicker()],
+  plugins: [
+    deskTool({
+      // ts-ignore
+      structure: pageStructure([home, settings]),
+    }),
+    visionTool(),
+    iconPicker(),
+    singletonPlugin([home.name, settings.name]),
+  ],
   schema: {
     types: schemaTypes,
+  },
+
+  studio: {
+    components: {
+      toolMenu: ToolMenu,
+    },
   },
 });
 

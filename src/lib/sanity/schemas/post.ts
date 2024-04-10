@@ -1,5 +1,8 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-// import { OGMediaEditor, OGMediaIcon } from "@/components/sanity/OGMediaEditor";
+import {
+  OGMediaEditor,
+  OGMediaIcon,
+} from "../../../components/sanity/OGMediaEditor";
 import { DocumentIcon } from "@sanity/icons";
 
 export default defineType({
@@ -77,7 +80,16 @@ export default defineType({
       name: "ogImage",
       title: "Open Graph Image",
       type: "image",
-      description: "Used both for the sharing card of twitter when sharing.",
+      options: {
+        sources: [
+          {
+            name: "sharing-image",
+            title: "Generate Image",
+            icon: OGMediaIcon,
+            component: OGMediaEditor,
+          },
+        ],
+      },
       fieldset: "metadata",
     }),
     defineField({
