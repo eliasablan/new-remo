@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import LinkButton from "../components/LinkButton.astro";
 import Hr from "../components/Hr.astro";
 import Card from "../components/Card.astro";
+// import Card from "../components/ReactCard";
 import Socials from "../components/Socials.astro";
 // site config
 import { SOCIALS } from "../config";
@@ -22,16 +23,20 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <Layout>
   <Header />
   <main id="main-content">
-    <section id="hero">
-      <h1>Proyecto Remo</h1>
+    <section id="hero" class="pb-6 pt-8">
+      <h1 class="my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl">
+        Proyecto Remo
+      </h1>
       <a
         target="_blank"
         href="/rss.xml"
-        class="rss-link"
+        class="mb-6"
         aria-label="rss feed"
         title="RSS Feed"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125"
           ><path
             d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
           ></path><path
@@ -40,25 +45,25 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </svg>
         <span class="sr-only">RSS Feed</span>
       </a>
-      <p class="pb-4 leading-relaxed">
+      <p class="my-2 pb-4 leading-relaxed">
         Somos una fundación sin ánimo de lucro que busca fomentar la lectura y
         el concepto de comunidad a través de la creación de pequeñas bibliotecas
         públicas al aire libre. Estas bibliotecas, ubicadas en calles y espacios
         públicos, ofrecen acceso gratuito a libros para todas las edades.
       </p>
-      <p class="pb-4 leading-relaxed">
+      <p class="my-2 pb-4 leading-relaxed">
         Cualquier persona puede tomar un libro para leerlo en casa o dejarlo
         para que otros puedan disfrutarlo. De esta manera, promovemos el
         intercambio cultural y la construcción de una comunidad más lectora y
         solidaria.
       </p>
-      <p class="pb-4 leading-relaxed">
+      <p class="my-2 pb-4 leading-relaxed">
         <b
           >¡Únete a nuestra iniciativa y ayúdanos a compartir el amor por la
           lectura!
         </b>
       </p>
-      <p class="pb-4 leading-relaxed"><b>¿Cómo puedes colaborar? </b></p>
+      <p class="my-2 pb-4 leading-relaxed"><b>¿Cómo puedes colaborar? </b></p>
       <ul class="list-inside list-disc pb-4 marker:text-skin-accent">
         <li class="m-2">Dona libros en buen estado.</li>
         <li class="m-2">
@@ -66,12 +71,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </li>
         <li class="m-2">Difunde nuestra iniciativa en tus redes sociales.</li>
       </ul>
-      <p><b>¡Juntos podemos construir un mundo más lector!</b></p>
+      <p class="my-2"><b>¡Juntos podemos construir un mundo más lector!</b></p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
-          <div class="social-wrapper">
-            <div class="social-links">Síguenos en nuestras redes sociales:</div>
+          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
+            <div class="mb-1 mr-2 whitespace-nowrap sm:mb-0">
+              Síguenos en nuestras redes sociales:
+            </div>
             <Socials />
           </div>
         )
@@ -83,14 +90,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured">
-            <h2>Publicaciones Destacadas</h2>
+          <section id="featured" class="pb-6 pt-12">
+            <h2 class="text-2xl font-semibold tracking-wide">
+              Publicaciones Destacadas
+            </h2>
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
                   href={`/posts/${slug}/`}
                   frontmatter={data}
                   secHeading={false}
+                  client:load
                 />
               ))}
             </ul>
@@ -102,8 +112,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts">
-          <h2>Publicaciones Recientes</h2>
+        <section id="recent-posts" class="pb-6 pt-12">
+          <h2 class="text-2xl font-semibold tracking-wide">
+            Publicaciones Recientes
+          </h2>
           <ul>
             {recentPosts.map(({ data, slug }) => (
               <Card
@@ -117,7 +129,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     }
 
-    <div class="all-posts-btn-wrapper">
+    <div class="my-8 text-center">
       <LinkButton href="/posts/">
         Todas las Publicaciones
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -131,41 +143,3 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
   <Footer />
 </Layout>
-
-<style>
-  /* ===== Hero Section ===== */
-  #hero {
-    @apply pb-6 pt-8;
-  }
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-  }
-  #hero .rss-link {
-    @apply mb-6;
-  }
-  #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
-  }
-  #hero p {
-    @apply my-2;
-  }
-  .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
-  #recent-posts {
-    @apply pb-6 pt-12;
-  }
-  #featured h2,
-  #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
-  }
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
-  }
-</style>
