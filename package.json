@@ -1,6 +1,5 @@
 {
   "name": "new-remo",
-  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
@@ -44,7 +43,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.48",
-    "@typescript-eslint/parser": "^7.3.1",
+    "@typescript-eslint/parser": "^7.6.0",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.31.4",
     "prettier": "^3.2.5",
