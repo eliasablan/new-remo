@@ -29,7 +29,7 @@ const config = defineConfig({
 
   plugins: [
     deskTool({
-      // ts-ignore
+      // @ts-expect-error
       structure: pageStructure([home, settings]),
     }),
     visionTool(),
