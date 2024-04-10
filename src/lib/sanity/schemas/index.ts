@@ -1,6 +1,6 @@
-import author from "./author";
 import post from "./post";
-import rrss from "./rrss";
 import tag from "./postTags";
+import author from "./author";
+import rrss from "./rrss";
 
-export const schemaTypes = [post, author, rrss, tag];
+export const schemaTypes = [post, tag, author, rrss];
