@@ -4,5 +4,16 @@ import post from "./post";
 import tag from "./postTags";
 import author from "./author";
 import rrss from "./rrss";
+import about from "./about";
+// import page from "./page";
 
-export const schemaTypes = [home, settings, post, tag, author, rrss];
+export const schemaTypes = [
+  home,
+  settings,
+  about,
+  //  page,
+  post,
+  tag,
+  author,
+  rrss,
+];

@@ -14,4 +14,8 @@ const image =
   node && builder.image(node).width(width).fit("max").auto("format");
 ---
 
-{image && node.alt && <img src={image.url()} alt={node.alt} title={node.alt} />}
+{
+  image && node.alt && (
+    <img src={image.url()} alt={node.alt} title={node.alt} class="" />
+  )
+}

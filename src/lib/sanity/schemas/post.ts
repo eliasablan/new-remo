@@ -3,13 +3,13 @@ import {
   OGMediaEditor,
   OGMediaIcon,
 } from "../../../components/sanity/OGMediaEditor";
-import { DocumentIcon } from "@sanity/icons";
+import { ComposeIcon } from "@sanity/icons";
 
 export default defineType({
   name: "post",
   title: "Posts",
   type: "document",
-  icon: DocumentIcon,
+  icon: ComposeIcon,
   fieldsets: [
     {
       title: "SEO & metadata",
