@@ -1,5 +1,13 @@
 import { SITE } from "../config";
+import imageUrlBuilder from "@sanity/image-url";
+import { sanityClient } from "sanity:client";
 import type { Post } from "./sanity/utils/sanityQueries";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+const imageSanityBuilder = imageUrlBuilder(sanityClient);
+
+export const urlFor = (source: SanityImageSource) =>
+  imageSanityBuilder.image(source);
 
 interface GetPaginationProps<T> {
   posts: T;

@@ -1,10 +1,9 @@
 ---
 import type { Props as $, ListItem } from "astro-portabletext/types";
-import { ListItem as DefaultListItem } from "astro-portabletext/components";
 
 export type Props = $<ListItem>;
 
 const props = Astro.props;
 ---
 
-<DefaultListItem {...props}><slot /></DefaultListItem>
+<li class="m-2" {...props}><slot /></li>

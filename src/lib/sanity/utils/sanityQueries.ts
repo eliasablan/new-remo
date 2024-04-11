@@ -69,6 +69,14 @@ export const getTags = async (): Promise<Tag[]> => {
   );
 };
 
+export const getHome = async (): Promise<any> => {
+  return await sanityClient.fetch(
+    `*[_type == "home"][0] {
+      overview
+    }`
+  );
+};
+
 export const getPostsByTag = async (slug: string): Promise<Post[]> => {
   return sanityClient.fetch(
     `*[_type == "post" && $slug in tags[]->slug.current] | order(_createdAt desc) {

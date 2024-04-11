@@ -6,13 +6,19 @@ import Footer from "../components/Footer.astro";
 import LinkButton from "../components/LinkButton.astro";
 import Hr from "../components/Hr.astro";
 import Card from "../components/Card.astro";
+import PT from "../components/PortableText/PortableText.astro";
 // import Card from "../components/ReactCard";
 import Socials from "../components/Socials.astro";
 // site config
 import { SOCIALS } from "../config";
 // queries
-import { getPosts, getRecentPosts } from "../lib/sanity/utils/sanityQueries";
+import {
+  getHome,
+  getPosts,
+  getRecentPosts,
+} from "../lib/sanity/utils/sanityQueries";
 
+const home = await getHome();
 const posts = await getPosts();
 const featuredPosts = posts.filter(({ data }) => data.featured);
 const recentPosts = await getRecentPosts();
@@ -23,7 +29,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <Layout>
   <Header />
   <main id="main-content">
-    <section id="hero" class="pb-6 pt-8">
+    <section id="hero" class="py-4">
       <h1 class="my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl">
         Proyecto Remo
       </h1>
@@ -45,33 +51,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </svg>
         <span class="sr-only">RSS Feed</span>
       </a>
-      <p class="my-2 pb-4 leading-relaxed">
-        Somos una fundación sin ánimo de lucro que busca fomentar la lectura y
-        el concepto de comunidad a través de la creación de pequeñas bibliotecas
-        públicas al aire libre. Estas bibliotecas, ubicadas en calles y espacios
-        públicos, ofrecen acceso gratuito a libros para todas las edades.
-      </p>
-      <p class="my-2 pb-4 leading-relaxed">
-        Cualquier persona puede tomar un libro para leerlo en casa o dejarlo
-        para que otros puedan disfrutarlo. De esta manera, promovemos el
-        intercambio cultural y la construcción de una comunidad más lectora y
-        solidaria.
-      </p>
-      <p class="my-2 pb-4 leading-relaxed">
-        <b
-          >¡Únete a nuestra iniciativa y ayúdanos a compartir el amor por la
-          lectura!
-        </b>
-      </p>
-      <p class="my-2 pb-4 leading-relaxed"><b>¿Cómo puedes colaborar? </b></p>
-      <ul class="list-inside list-disc pb-4 marker:text-skin-accent">
-        <li class="m-2">Dona libros en buen estado.</li>
-        <li class="m-2">
-          Sé voluntario en la construcción o mantenimiento de las bibliotecas.
-        </li>
-        <li class="m-2">Difunde nuestra iniciativa en tus redes sociales.</li>
-      </ul>
-      <p class="my-2"><b>¡Juntos podemos construir un mundo más lector!</b></p>
+      <PT value={home.overview} />
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (

@@ -68,7 +68,7 @@ const styleIs = (style: string) => style === node.style;
       <slot />
     </blockquote>
   ) : styleIs("normal") ? (
-    <p {...attrs}>
+    <p class="pb-4 leading-relaxed text-skin-base" {...attrs}>
       <slot />
     </p>
   ) : (
