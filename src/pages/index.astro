@@ -78,7 +78,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
-                  href={`/posts/${slug}/`}
+                  href={`/blog/${slug}/`}
                   frontmatter={data}
                   secHeading={false}
                 />
@@ -99,7 +99,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <ul>
             {recentPosts.map(({ data, slug }) => (
               <Card
-                href={`/posts/${slug}/`}
+                href={`/blog/${slug}/`}
                 frontmatter={data}
                 secHeading={false}
               />

@@ -1,4 +1,5 @@
 ---
+import Header from "../components/Header.astro";
 import { LOCALE, SITE } from "../config";
 import "../styles/base.css";
 import { ViewTransitions } from "astro:transitions";
@@ -110,6 +111,7 @@ const socialImageURL = new URL(
     <script is:inline src="/toggle-theme.js"></script>
   </head>
   <body>
+    <!-- <Header /> -->
     <slot />
   </body>
 </html>
