@@ -20,8 +20,6 @@ import {
 } from "../lib/sanity/utils/sanityQueries";
 
 const home = await getHome();
-const settings = await getSettings();
-console.log({ urls: settings.urls });
 const posts = await getPosts();
 const featuredPosts = posts.filter(({ data }) => data.featured);
 const recentPosts = await getRecentPosts();
@@ -112,7 +110,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton href="/blog/">
         Todas las Publicaciones
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
