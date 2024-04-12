@@ -1,32 +1,32 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Main from "../layouts/Main.astro";
-import Header from "./Header.astro";
-import Footer from "./Footer.astro";
-import Card from "./Card.astro";
-import Pagination from "./Pagination.astro";
-import { SITE } from "../config";
-import type { Post } from "../lib/sanity/utils/sanityQueries";
+import Layout from '../layouts/Layout.astro'
+import Main from '../layouts/Main.astro'
+import Header from './Header.astro'
+import Footer from './Footer.astro'
+import Card from './Card.astro'
+import Pagination from './Pagination.astro'
+import { SITE } from '../config'
+import type { Post } from '../lib/sanity/utils/sanityQueries'
 
 export interface Props {
-  currentPage: number;
-  totalPages: number;
-  paginatedPosts: Post[];
-  tag: string;
-  slug: string;
+  currentPage: number
+  totalPages: number
+  paginatedPosts: Post[]
+  tag: string
+  slug: string
 }
 
-const { currentPage, totalPages, paginatedPosts, tag, slug } = Astro.props;
+const { currentPage, totalPages, paginatedPosts, tag, slug } = Astro.props
 ---
 
 <Layout title={`Tag: ${slug} | ${SITE.title}`}>
-  <Header activeNav="tags" />
+  <Header activeNav='tags' />
   <Main
     pageTitle={[`Tag:`, `${tag}`]}
     titleTransition={slug}
     pageDesc={`Todas las publicaciones con el tag "${slug}".`}
   >
-    <h1 slot="title" transition:name={slug}>{`Tag:${slug}`}</h1>
+    <h1 slot='title' transition:name={slug}>{`Tag:${slug}`}</h1>
     <ul>
       {
         paginatedPosts.map(({ data, slug }) => (
@@ -40,7 +40,7 @@ const { currentPage, totalPages, paginatedPosts, tag, slug } = Astro.props;
     {currentPage}
     {totalPages}
     prevUrl={`/tags/${tag}${
-      currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""
+      currentPage - 1 !== 1 ? '/' + (currentPage - 1) : ''
     }/`}
     nextUrl={`/tags/${tag}/${currentPage + 1}/`}
   />

@@ -1,25 +1,25 @@
-import { sanityClient } from "sanity:client";
+import { sanityClient } from 'sanity:client'
 
 export type Post = {
-  id: string;
-  slug: string;
-  body: string;
+  id: string
+  slug: string
+  body: string
   data: {
-    slug: string;
-    author: string;
-    pubDatetime: string;
-    modDatetime: string;
-    title: string;
-    featured: boolean;
-    tags: Tag[];
-    description: string;
-  };
-};
+    slug: string
+    author: string
+    pubDatetime: string
+    modDatetime: string
+    title: string
+    featured: boolean
+    tags: Tag[]
+    description: string
+  }
+}
 
 export type Tag = {
-  name: string;
-  slug: string;
-};
+  name: string
+  slug: string
+}
 
 export const getPosts = async (): Promise<Post[]> => {
   return await sanityClient.fetch(
@@ -38,8 +38,8 @@ export const getPosts = async (): Promise<Post[]> => {
         description
       }
     }`
-  );
-};
+  )
+}
 
 export const getRecentPosts = async (): Promise<Post[]> => {
   return await sanityClient.fetch(
@@ -57,8 +57,8 @@ export const getRecentPosts = async (): Promise<Post[]> => {
         description
       }
     }`
-  );
-};
+  )
+}
 
 export const getTags = async (): Promise<Tag[]> => {
   return await sanityClient.fetch(
@@ -66,32 +66,32 @@ export const getTags = async (): Promise<Tag[]> => {
       name,
       "slug":slug.current
     }`
-  );
-};
+  )
+}
 
 export const getHome = async (): Promise<any> => {
   return await sanityClient.fetch(
     `*[_type == "home"][0] {
       overview
     }`
-  );
-};
+  )
+}
 
 export const getAbout = async (): Promise<any> => {
   return await sanityClient.fetch(
     `*[_type == "about"][0] {
       overview
     }`
-  );
-};
+  )
+}
 
 export const getSettings = async (): Promise<any> => {
   return await sanityClient.fetch(
     `*[_type == "settings"][0] {
       ...
     }`
-  );
-};
+  )
+}
 
 export const getPostsByTag = async (slug: string): Promise<Post[]> => {
   return sanityClient.fetch(
@@ -111,5 +111,5 @@ export const getPostsByTag = async (slug: string): Promise<Post[]> => {
       }
     }`,
     { slug }
-  );
-};
+  )
+}

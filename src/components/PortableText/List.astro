@@ -1,11 +1,11 @@
 ---
-import type { Props as $, List as List } from "astro-portabletext/types";
+import type { Props as $, List as List } from 'astro-portabletext/types'
 
-export type Props = $<List>;
+export type Props = $<List>
 
-const props = Astro.props;
+const props = Astro.props
 ---
 
-<ul class="list-inside list-disc pb-4 marker:text-skin-accent" {...props}>
+<ul class='list-inside list-disc pb-4 marker:text-skin-accent' {...props}>
   <slot />
 </ul>

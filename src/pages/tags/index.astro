@@ -1,26 +1,26 @@
 ---
 // layout and components
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import Layout from "../../layouts/Layout.astro";
-import Main from "../../layouts/Main.astro";
-import Tag from "../../components/Tag.astro";
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import Layout from '../../layouts/Layout.astro'
+import Main from '../../layouts/Main.astro'
+import Tag from '../../components/Tag.astro'
 // site config
-import { SITE } from "../../config";
+import { SITE } from '../../config'
 // queries
-import { getTags } from "../../lib/sanity/utils/sanityQueries";
+import { getTags } from '../../lib/sanity/utils/sanityQueries'
 
-const tags = await getTags();
+const tags = await getTags()
 ---
 
 <Layout title={`Tags | ${SITE.title}`}>
-  <Header activeNav="tags" />
+  <Header activeNav='tags' />
   <Main
-    pageTitle="Tags"
-    pageDesc="Todos los tags utilizados en nuestras publicaciones."
+    pageTitle='Tags'
+    pageDesc='Todos los tags utilizados en nuestras publicaciones.'
   >
     <ul>
-      {tags && tags.map(({ slug }) => <Tag {slug} size="lg" />)}
+      {tags && tags.map(({ slug }) => <Tag {slug} size='lg' />)}
     </ul>
   </Main>
   <Footer />

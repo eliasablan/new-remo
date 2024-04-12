@@ -1,21 +1,20 @@
 ---
-import imageUrlBuilder from "@sanity/image-url";
-import { sanityClient } from "sanity:client";
+import imageUrlBuilder from '@sanity/image-url'
+import { sanityClient } from 'sanity:client'
 
-const builder = imageUrlBuilder(sanityClient);
+const builder = imageUrlBuilder(sanityClient)
 
-const { node } = Astro.props;
-const { width = 960 } = Astro.props;
+const { node } = Astro.props
+const { width = 960 } = Astro.props
 
 // See https://www.sanity.io/docs/presenting-images for general documentation on
 // presenting images, and https://www.sanity.io/docs/image-url for specifics on
 // this builder API
-const image =
-  node && builder.image(node).width(width).fit("max").auto("format");
+const image = node && builder.image(node).width(width).fit('max').auto('format')
 ---
 
 {
   image && node.alt && (
-    <img src={image.url()} alt={node.alt} title={node.alt} class="" />
+    <img src={image.url()} alt={node.alt} title={node.alt} class='' />
   )
 }

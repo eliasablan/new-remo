@@ -1,147 +1,147 @@
-import type { Site, SocialObjects } from "./types";
+import type { Site, SocialObjects } from './types'
 
 export const SITE: Site = {
-  website: "https://new-remo-livid.vercel.app", // replace this with your deployed domain
-  author: "Elias Ablan",
-  desc: "Bibliotecas y libros para la educación.",
-  title: "Proyecto Remo",
-  ogImage: "astropaper-og.jpg",
+  website: 'https://new-remo-livid.vercel.app', // replace this with your deployed domain
+  author: 'Elias Ablan',
+  desc: 'Bibliotecas y libros para la educación.',
+  title: 'Proyecto Remo',
+  ogImage: 'astropaper-og.jpg',
   lightAndDarkMode: true,
   postPerPage: 3,
-  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-};
+  scheduledPostMargin: 15 * 60 * 1000 // 15 minutes
+}
 
 export const LOCALE = {
-  lang: "es", // html lang code. Set this empty and default will be "en"
-  langTag: ["es"], // BCP 47 Language Tags. Set this empty [] to use the environment default
-} as const;
+  lang: 'es', // html lang code. Set this empty and default will be "en"
+  langTag: ['es'] // BCP 47 Language Tags. Set this empty [] to use the environment default
+} as const
 
 export const LOGO_IMAGE = {
   enable: false,
   svg: false,
   width: 50,
-  height: 50,
-};
+  height: 50
+}
 
 export const SOCIALS: SocialObjects = [
   {
-    name: "Github",
-    href: "https://github.com/eliasablan",
+    name: 'Github',
+    href: 'https://github.com/eliasablan',
     linkTitle: ` ${SITE.author} on Github`,
-    active: false,
+    active: false
   },
   {
-    name: "Facebook",
-    href: "https://www.facebook.com/eablanespino",
+    name: 'Facebook',
+    href: 'https://www.facebook.com/eablanespino',
     linkTitle: `${SITE.author} on Facebook`,
-    active: false,
+    active: false
   },
   {
-    name: "Instagram",
-    href: "https://www.instagram.com/proyecto_remo/",
+    name: 'Instagram',
+    href: 'https://www.instagram.com/proyecto_remo/',
     linkTitle: `${SITE.author} on Instagram`,
-    active: true,
+    active: true
   },
   {
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/eliasablan",
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/eliasablan',
     linkTitle: `${SITE.author} on LinkedIn`,
-    active: false,
+    active: false
   },
   {
-    name: "Mail",
-    href: "mailto:eliasgui32@gmail.com",
+    name: 'Mail',
+    href: 'mailto:eliasgui32@gmail.com',
     linkTitle: `Send an email to ${SITE.title}`,
-    active: false,
+    active: false
   },
   {
-    name: "Twitter",
-    href: "https://github.com/eliasablan",
+    name: 'Twitter',
+    href: 'https://github.com/eliasablan',
     linkTitle: `${SITE.author} on Twitter`,
-    active: false,
+    active: false
   },
   {
-    name: "Twitch",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Twitch',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Twitch`,
-    active: false,
+    active: false
   },
   {
-    name: "YouTube",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'YouTube',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on YouTube`,
-    active: false,
+    active: false
   },
   {
-    name: "WhatsApp",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'WhatsApp',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on WhatsApp`,
-    active: false,
+    active: false
   },
   {
-    name: "Snapchat",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Snapchat',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Snapchat`,
-    active: false,
+    active: false
   },
   {
-    name: "Pinterest",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Pinterest',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Pinterest`,
-    active: false,
+    active: false
   },
   {
-    name: "TikTok",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'TikTok',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on TikTok`,
-    active: false,
+    active: false
   },
   {
-    name: "CodePen",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'CodePen',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on CodePen`,
-    active: false,
+    active: false
   },
   {
-    name: "Discord",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Discord',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Discord`,
-    active: false,
+    active: false
   },
   {
-    name: "GitLab",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'GitLab',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on GitLab`,
-    active: false,
+    active: false
   },
   {
-    name: "Reddit",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Reddit',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Reddit`,
-    active: false,
+    active: false
   },
   {
-    name: "Skype",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Skype',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Skype`,
-    active: false,
+    active: false
   },
   {
-    name: "Steam",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Steam',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Steam`,
-    active: false,
+    active: false
   },
   {
-    name: "Telegram",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Telegram',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Telegram`,
-    active: false,
+    active: false
   },
   {
-    name: "Mastodon",
-    href: "https://github.com/satnaing/astro-paper",
+    name: 'Mastodon',
+    href: 'https://github.com/satnaing/astro-paper',
     linkTitle: `${SITE.title} on Mastodon`,
-    active: false,
-  },
-];
+    active: false
+  }
+]

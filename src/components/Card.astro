@@ -1,18 +1,18 @@
 ---
-import Datetime from "./Datetime.astro";
-const { frontmatter, href } = Astro.props;
+import Datetime from './Datetime.astro'
+const { frontmatter, href } = Astro.props
 const { title, slug, description, pubDatetime, modDatetime, secHeading } =
-  frontmatter;
+  frontmatter
 const headerProps = {
   style: { viewTransitionName: slug },
-  className: "text-lg font-medium decoration-dashed hover:underline",
-};
+  className: 'text-lg font-medium decoration-dashed hover:underline'
+}
 ---
 
-<li class="my-6">
+<li class='my-6'>
   <a
     href={href}
-    class="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+    class='inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0'
   >
     {
       secHeading ? (

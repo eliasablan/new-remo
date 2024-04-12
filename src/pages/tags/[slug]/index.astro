@@ -1,31 +1,28 @@
 ---
-import TagPosts from "../../../components/TagPosts.astro";
-import {
-  getTags,
-  getPostsByTag,
-} from "../../../lib/sanity/utils/sanityQueries";
-import { getPagination } from "../../../lib/utils";
+import TagPosts from '../../../components/TagPosts.astro'
+import { getTags, getPostsByTag } from '../../../lib/sanity/utils/sanityQueries'
+import { getPagination } from '../../../lib/utils'
 
 export async function getStaticPaths() {
-  const tags = await getTags();
+  const tags = await getTags()
 
   return tags.map(({ name, slug }) => {
     return {
       params: { slug },
-      props: { name },
-    };
-  });
+      props: { name }
+    }
+  })
 }
 
-const { slug } = Astro.params;
-const { name } = Astro.props;
-const postsByTag = await getPostsByTag(slug);
+const { slug } = Astro.params
+const { name } = Astro.props
+const postsByTag = await getPostsByTag(slug)
 
 const pagination = getPagination({
   posts: postsByTag,
   page: 1,
-  isIndex: true,
-});
+  isIndex: true
+})
 ---
 
 <TagPosts {...pagination} tag={name} {slug} />

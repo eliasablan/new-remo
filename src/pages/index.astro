@@ -1,63 +1,63 @@
 ---
 // layout and components
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import LinkButton from "../components/LinkButton.astro";
-import Hr from "../components/Hr.astro";
-import Card from "../components/Card.astro";
-import PT from "../components/PortableText/PortableText.astro";
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import LinkButton from '../components/LinkButton.astro'
+import Hr from '../components/Hr.astro'
+import Card from '../components/Card.astro'
+import PT from '../components/PortableText/PortableText.astro'
 // import Card from "../components/ReactCard";
-import Socials from "../components/Socials.astro";
+import Socials from '../components/Socials.astro'
 // site config
-import { SOCIALS } from "../config";
+import { SOCIALS } from '../config'
 // queries
 import {
   getHome,
   getSettings,
   getPosts,
-  getRecentPosts,
-} from "../lib/sanity/utils/sanityQueries";
+  getRecentPosts
+} from '../lib/sanity/utils/sanityQueries'
 
-const home = await getHome();
-const posts = await getPosts();
-const featuredPosts = posts.filter(({ data }) => data.featured);
-const recentPosts = await getRecentPosts();
+const home = await getHome()
+const posts = await getPosts()
+const featuredPosts = posts.filter(({ data }) => data.featured)
+const recentPosts = await getRecentPosts()
 
-const socialCount = SOCIALS.filter(social => social.active).length;
+const socialCount = SOCIALS.filter((social) => social.active).length
 ---
 
 <Layout>
   <Header />
-  <main id="main-content">
-    <section id="hero" class="py-4">
-      <h1 class="my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl">
+  <main id='main-content'>
+    <section id='hero' class='py-4'>
+      <h1 class='my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl'>
         Proyecto Remo
       </h1>
       <a
-        target="_blank"
-        href="/rss.xml"
-        class="mb-6"
-        aria-label="rss feed"
-        title="RSS Feed"
+        target='_blank'
+        href='/rss.xml'
+        class='mb-6'
+        aria-label='rss feed'
+        title='RSS Feed'
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125"
+          xmlns='http://www.w3.org/2000/svg'
+          class='mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125'
           ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+            d='M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z'
           ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
+            d='M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z'
+          ></path><circle cx='6' cy='18' r='2'></circle>
         </svg>
-        <span class="sr-only">RSS Feed</span>
+        <span class='sr-only'>RSS Feed</span>
       </a>
       <PT value={home.overview} />
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="mb-1 mr-2 whitespace-nowrap sm:mb-0">
+          <div class='mt-4 flex flex-col sm:flex-row sm:items-center'>
+            <div class='mb-1 mr-2 whitespace-nowrap sm:mb-0'>
               Síguenos en nuestras redes sociales:
             </div>
             <Socials />
@@ -71,8 +71,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured" class="pb-6 pt-12">
-            <h2 class="text-2xl font-semibold tracking-wide">
+          <section id='featured' class='pb-6 pt-12'>
+            <h2 class='text-2xl font-semibold tracking-wide'>
               Publicaciones Destacadas
             </h2>
             <ul>
@@ -92,8 +92,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts" class="pb-6 pt-12">
-          <h2 class="text-2xl font-semibold tracking-wide">
+        <section id='recent-posts' class='pb-6 pt-12'>
+          <h2 class='text-2xl font-semibold tracking-wide'>
             Publicaciones Recientes
           </h2>
           <ul>
@@ -109,12 +109,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     }
 
-    <div class="my-8 text-center">
-      <LinkButton href="/blog/">
+    <div class='my-8 text-center'>
+      <LinkButton href='/blog/'>
         Todas las Publicaciones
-        <svg xmlns="http://www.w3.org/2000/svg"
+        <svg xmlns='http://www.w3.org/2000/svg'
           ><path
-            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            d='m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z'
           ></path>
         </svg>
       </LinkButton>

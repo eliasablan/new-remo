@@ -1,62 +1,61 @@
-import { SITE } from "../config";
-import imageUrlBuilder from "@sanity/image-url";
-import { sanityClient } from "sanity:client";
-import type { Post } from "./sanity/utils/sanityQueries";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { SITE } from '../config'
+import imageUrlBuilder from '@sanity/image-url'
+import { sanityClient } from 'sanity:client'
+import type { Post } from './sanity/utils/sanityQueries'
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
-const imageSanityBuilder = imageUrlBuilder(sanityClient);
+const imageSanityBuilder = imageUrlBuilder(sanityClient)
 
 export const urlFor = (source: SanityImageSource) =>
-  imageSanityBuilder.image(source);
+  imageSanityBuilder.image(source)
 
 interface GetPaginationProps<T> {
-  posts: T;
-  page: string | number;
-  isIndex?: boolean;
+  posts: T
+  page: string | number
+  isIndex?: boolean
 }
 
 export const getPagination = <T>({
   posts,
   page,
-  isIndex = false,
+  isIndex = false
 }: GetPaginationProps<T[]>) => {
-  const totalPagesArray = getPageNumbers(posts.length);
-  const totalPages = totalPagesArray.length;
+  const totalPagesArray = getPageNumbers(posts.length)
+  const totalPages = totalPagesArray.length
 
   const currentPage = isIndex
     ? 1
     : page && !isNaN(Number(page)) && totalPagesArray.includes(Number(page))
       ? Number(page)
-      : 0;
+      : 0
 
-  const lastPost = isIndex ? SITE.postPerPage : currentPage * SITE.postPerPage;
-  const startPost = isIndex ? 0 : lastPost - SITE.postPerPage;
-  const paginatedPosts = posts.slice(startPost, lastPost);
+  const lastPost = isIndex ? SITE.postPerPage : currentPage * SITE.postPerPage
+  const startPost = isIndex ? 0 : lastPost - SITE.postPerPage
+  const paginatedPosts = posts.slice(startPost, lastPost)
 
   return {
     totalPages,
     currentPage,
-    paginatedPosts,
-  };
-};
+    paginatedPosts
+  }
+}
 
 export const getPageNumbers = (numberOfPosts: number) => {
-  const numberOfPages = numberOfPosts / Number(SITE.postPerPage);
+  const numberOfPages = numberOfPosts / Number(SITE.postPerPage)
 
-  let pageNumbers: number[] = [];
+  let pageNumbers: number[] = []
   for (let i = 1; i <= Math.ceil(numberOfPages); i++) {
-    pageNumbers = [...pageNumbers, i];
+    pageNumbers = [...pageNumbers, i]
   }
 
-  return pageNumbers;
-};
+  return pageNumbers
+}
 
 export const postFilter = ({ data }: Post) => {
   const isPublishTimePassed =
-    Date.now() >
-    new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin;
-  return import.meta.env.DEV || isPublishTimePassed;
-};
+    Date.now() > new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin
+  return import.meta.env.DEV || isPublishTimePassed
+}
 
 export const getSortedPosts = (posts: Post[]) => {
   return posts
@@ -69,5 +68,5 @@ export const getSortedPosts = (posts: Post[]) => {
         Math.floor(
           new Date(a.data.modDatetime ?? a.data.pubDatetime).getTime() / 1000
         )
-    );
-};
+    )
+}

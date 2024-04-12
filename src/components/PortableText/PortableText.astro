@@ -1,17 +1,17 @@
 ---
-import { PortableText as PT } from "astro-portabletext";
-import { mergeComponents } from "astro-portabletext/utils";
-import Block from "./Block.astro";
-import List from "./List.astro";
-import ListItem from "./ListItem.astro";
-import Mark from "./Mark.astro";
-import SanityImage from "./Image.astro";
+import { PortableText as PT } from 'astro-portabletext'
+import { mergeComponents } from 'astro-portabletext/utils'
+import Block from './Block.astro'
+import List from './List.astro'
+import ListItem from './ListItem.astro'
+import Mark from './Mark.astro'
+import SanityImage from './Image.astro'
 
-type PortableTextProps = Parameters<typeof PT>[0];
+type PortableTextProps = Parameters<typeof PT>[0]
 
 export interface Props {
-  value: PortableTextProps["value"];
-  components?: PortableTextProps["components"];
+  value: PortableTextProps['value']
+  components?: PortableTextProps['components']
 }
 
 const defaultComponents = {
@@ -20,16 +20,16 @@ const defaultComponents = {
   listItem: ListItem,
   mark: Mark,
   type: {
-    image: SanityImage,
-  },
-};
+    image: SanityImage
+  }
+}
 
-const { value, components = {}, ...attrs } = Astro.props;
+const { value, components = {}, ...attrs } = Astro.props
 
 const portableTextProps = {
   value: value,
-  components: defaultComponents,
-};
+  components: defaultComponents
+}
 ---
 
 <PT {...portableTextProps} {...attrs} />

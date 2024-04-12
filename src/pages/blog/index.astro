@@ -1,18 +1,18 @@
 ---
 // layout and components
-import Posts from "../../layouts/Posts.astro";
+import Posts from '../../layouts/Posts.astro'
 // utils
-import { getPagination } from "../../lib/utils";
+import { getPagination } from '../../lib/utils'
 // queries
-import { getPosts } from "../../lib/sanity/utils/sanityQueries";
+import { getPosts } from '../../lib/sanity/utils/sanityQueries'
 
-const posts = await getPosts();
+const posts = await getPosts()
 
 const pagination = getPagination({
   posts: posts,
   page: 1,
-  isIndex: true,
-});
+  isIndex: true
+})
 ---
 
 <Posts {...pagination} />

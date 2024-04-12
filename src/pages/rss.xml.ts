@@ -1,9 +1,9 @@
-import rss from "@astrojs/rss";
-import { getPosts } from "../lib/sanity/utils/sanityQueries";
-import { SITE } from "../config";
+import rss from '@astrojs/rss'
+import { getPosts } from '../lib/sanity/utils/sanityQueries'
+import { SITE } from '../config'
 
 export async function GET() {
-  const posts = await getPosts();
+  const posts = await getPosts()
   return rss({
     title: SITE.title,
     description: SITE.desc,
@@ -12,7 +12,7 @@ export async function GET() {
       link: `blog/${slug}/`,
       title: data.title,
       description: data.description,
-      pubDate: new Date(data.modDatetime ?? data.pubDatetime),
-    })),
-  });
+      pubDate: new Date(data.modDatetime ?? data.pubDatetime)
+    }))
+  })
 }

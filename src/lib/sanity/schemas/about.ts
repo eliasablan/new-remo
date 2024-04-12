@@ -1,100 +1,100 @@
-import { InfoOutlineIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { InfoOutlineIcon } from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import {
   OGMediaEditor,
-  OGMediaIcon,
-} from "../../../components/sanity/OGMediaEditor";
+  OGMediaIcon
+} from '../../../components/sanity/OGMediaEditor'
 
 export default defineType({
-  name: "about",
-  title: "About",
-  type: "document",
+  name: 'about',
+  title: 'About',
+  type: 'document',
   icon: InfoOutlineIcon,
   groups: [
     {
-      name: "content",
-      title: "Content",
-      default: true,
-    },
+      name: 'content',
+      title: 'Content',
+      default: true
+    }
   ],
   fieldsets: [
     {
-      name: "seo",
-      title: "SEO",
-      description: "Set up your metadata for SEO here.",
+      name: 'seo',
+      title: 'SEO',
+      description: 'Set up your metadata for SEO here.',
       options: {
         collapsible: true, // Makes the whole fieldset collapsible
         collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        modal: { type: "popover" }, // Makes the modal type a popover
-      },
-    },
+        modal: { type: 'popover' } // Makes the modal type a popover
+      }
+    }
   ],
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
     defineField({
-      name: "title",
-      description: "Used for the <meta> title tag for SEO.",
-      title: "Title",
-      type: "string",
-      validation: rule => rule.min(8).max(60),
-      fieldset: "seo",
+      name: 'title',
+      description: 'Used for the <meta> title tag for SEO.',
+      title: 'Title',
+      type: 'string',
+      validation: (rule) => rule.min(8).max(60),
+      fieldset: 'seo'
     }),
     defineField({
-      name: "seo_description",
-      description: "Used for the <meta> description tag for SEO.",
-      title: " SEO Description",
-      type: "text",
-      validation: rule => rule.min(70).max(155),
-      fieldset: "seo",
+      name: 'seo_description',
+      description: 'Used for the <meta> description tag for SEO.',
+      title: ' SEO Description',
+      type: 'text',
+      validation: (rule) => rule.min(70).max(155),
+      fieldset: 'seo'
     }),
     defineField({
-      name: "og_image",
-      title: "OG image",
-      type: "image",
+      name: 'og_image',
+      title: 'OG image',
+      type: 'image',
       options: {
         sources: [
           {
-            name: "sharing-image",
-            title: "Generate Image",
+            name: 'sharing-image',
+            title: 'Generate Image',
             icon: OGMediaIcon,
-            component: OGMediaEditor,
-          },
-        ],
+            component: OGMediaEditor
+          }
+        ]
       },
-      fieldset: "seo",
+      fieldset: 'seo'
     }),
     defineField({
-      name: "overview",
-      description: "Set your homepage content here.",
-      title: "Page Content",
-      type: "array",
+      name: 'overview',
+      description: 'Set your homepage content here.',
+      title: 'Page Content',
+      type: 'array',
       of: [
-        defineArrayMember({ type: "block" }),
+        defineArrayMember({ type: 'block' }),
         defineArrayMember({
-          type: "image",
+          type: 'image',
           fields: [
             {
-              name: "alt",
-              type: "string",
-              title: "Alternative Text",
-            },
-          ],
-        }),
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text'
+            }
+          ]
+        })
       ],
-      validation: rule => rule.required(),
-      group: "content",
-    }),
+      validation: (rule) => rule.required(),
+      group: 'content'
+    })
   ],
   preview: {
     select: {
-      title: "title",
+      title: 'title'
     },
     prepare({ title }) {
       return {
-        subtitle: "About us",
-        title: title || "About us",
-      };
-    },
-  },
-});
+        subtitle: 'About us',
+        title: title || 'About us'
+      }
+    }
+  }
+})
