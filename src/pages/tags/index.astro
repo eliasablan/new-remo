@@ -1,7 +1,5 @@
 ---
 // layout and components
-import Header from '../../components/Header.astro'
-import Footer from '../../components/Footer.astro'
 import Layout from '../../layouts/Layout.astro'
 import Main from '../../layouts/Main.astro'
 import Tag from '../../components/Tag.astro'
@@ -13,8 +11,8 @@ import { getTags } from '../../lib/sanity/utils/sanityQueries'
 const tags = await getTags()
 ---
 
-<Layout title={`Tags | ${SITE.title}`}>
-  <Header activeNav='tags' />
+<Layout title={`Tags | ${SITE.title}`} activeNav='tags'>
+  <!-- <Header activeNav='tags' /> -->
   <Main
     pageTitle='Tags'
     pageDesc='Todos los tags utilizados en nuestras publicaciones.'
@@ -23,5 +21,4 @@ const tags = await getTags()
       {tags && tags.map(({ slug }) => <Tag {slug} size='lg' />)}
     </ul>
   </Main>
-  <Footer />
 </Layout>
