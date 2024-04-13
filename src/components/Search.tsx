@@ -100,11 +100,9 @@ export default function SearchBar({ searchList }: Props) {
 
       {inputVal.length > 1 && (
         <div className='mt-8'>
-          
           {searchResults?.length && searchResults?.length === 1
-            ?`Encontrado ${searchResults?.length} resultado para '${inputVal}'`
-            :`Encontrados ${searchResults?.length} resultados para '${inputVal}'`
-}
+            ? `Encontrado ${searchResults?.length} resultado para '${inputVal}'`
+            : `Encontrados ${searchResults?.length} resultados para '${inputVal}'`}
         </div>
       )}
 
