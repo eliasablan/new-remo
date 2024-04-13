@@ -1,8 +1,6 @@
 ---
 // layout and components
 import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
 import PT from '../components/PortableText/PortableText.astro'
 // queries
 import { getAbout } from '../lib/sanity/utils/sanityQueries'
@@ -10,13 +8,10 @@ import { getAbout } from '../lib/sanity/utils/sanityQueries'
 const about = await getAbout()
 ---
 
-<Layout>
-  <Header activeNav='acerca' />
+<Layout activeNav='acerca'>
   <main id='main-content'>
     <section id='hero' class='py-4'>
       <PT value={about.overview} />
     </section>
   </main>
-
-  <Footer />
 </Layout>
