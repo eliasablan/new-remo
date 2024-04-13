@@ -4,6 +4,9 @@ import Footer from '../components/Footer.astro'
 import { LOCALE, SITE } from '../config'
 import '../styles/base.css'
 import { ViewTransitions } from 'astro:transitions'
+import { getSettings } from '../lib/sanity/utils/sanityQueries'
+
+const settings = await getSettings()
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION
 
@@ -117,8 +120,8 @@ const socialImageURL = new URL(
   </head>
 
   <body>
-    <Header activeNav={activeNav} />
+    <Header links={settings.urls} activeNav={activeNav} />
     <slot />
-    <Footer noMarginTop={totalPages > 1} />
+    <Footer message={settings.footer} noMarginTop={totalPages > 1} />
   </body>
 </html>

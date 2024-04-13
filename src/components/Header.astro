@@ -2,15 +2,13 @@
 import { LOGO_IMAGE, SITE } from '../config'
 import Hr from './Hr.astro'
 import LinkButton from './LinkButton.astro'
-import { getSettings } from '../lib/sanity/utils/sanityQueries'
-
-const settings = await getSettings()
 
 export interface Props {
+  links: { text: string; url: string }[]
   activeNav?: 'blog' | 'tags' | 'acerca' | 'search'
 }
 
-const { activeNav } = Astro.props
+const { links, activeNav } = Astro.props
 ---
 
 <header>
@@ -67,7 +65,7 @@ const { activeNav } = Astro.props
           class='flex-col pt-4 hidden sm:hidden space-y-3 h-auto transition-all duration-1000'
         >
           {
-            settings.urls.map((item: { text: string; url: string }) => {
+            links.map((item: { text: string; url: string }) => {
               return (
                 <li>
                   <a
@@ -127,7 +125,7 @@ const { activeNav } = Astro.props
         <!-- #region Big Screen -->
         <ul id='menu-items' class='hidden sm:flex'>
           {
-            settings.urls.map((item: { text: string; url: string }) => {
+            links.map((item: { text: string; url: string }) => {
               return (
                 <li class='px-2'>
                   <a

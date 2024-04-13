@@ -88,7 +88,8 @@ export const getAbout = async (): Promise<any> => {
 export const getSettings = async (): Promise<any> => {
   return await sanityClient.fetch(
     `*[_type == "settings"][0] {
-      ...
+      urls,
+      footer
     }`
   )
 }
